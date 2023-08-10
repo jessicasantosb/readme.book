@@ -2,13 +2,14 @@ import React from 'react';
 import '../App'
 import image from '../images/painting.jpg'
 import SearchBooks from '../components/searchBooks';
+import {motion as m} from 'framer-motion'
 
 function Home() {
   return (
-    <div>
+    <m.div initial={{opacity: 0.6}} animate={{opacity: 1}} exit={{opacity: 0}}>
 
       <div className='relative h-screen w-full flex items-center justify-end bg-black/30'>
-        <div className='z-10 text-white pr-14'>
+        <div className='z-10 text-white '>
           <h1 className='flex flex-wrap font-bold text-7xl m-5 p-1 bg-black/40'>Readme.<span>Books</span></h1>
           <h3 className='text-3xl mt-10 m-5 p-1 bg-black/40'>A place for discover new histories</h3>
         </div>
@@ -17,7 +18,7 @@ function Home() {
 
       <SearchBooks/>
 
-    </div>
+    </m.div>
   );
 }
 

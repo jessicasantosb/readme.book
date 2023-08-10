@@ -6,7 +6,10 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Home from './routes/home'
 import Profile from './routes/profile';
 import ErrorPage from './routes/errorPage';
+import Books from './routes/books'
+import FormSuccess from './routes/formSuccess';
 import AppContextProvider  from './components/context/appContext';
+import { AnimatePresence } from 'framer-motion';
 
 const router = createBrowserRouter([
   {
@@ -17,6 +20,12 @@ const router = createBrowserRouter([
       {
         path: "/profile", element: <Profile />,
       },
+      {
+        path: "/books", element: <Books />,
+      },
+      {
+        path: "/success", element: <FormSuccess />,
+      },
     ]
   },
 ])
@@ -24,8 +33,10 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <AppContextProvider>
-      <RouterProvider router={router} />
-    </AppContextProvider>
+    <AnimatePresence mode='wait' initial="false">
+      <AppContextProvider>
+        <RouterProvider router={router} />
+      </AppContextProvider>
+    </AnimatePresence>
   </React.StrictMode>
 );

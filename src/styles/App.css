@@ -9,6 +9,10 @@ body {
   background-color: var(--mainColorLight);
   font-family: 'Roboto', sans-serif;
 }
+:root {
+  ---color2: #0E2954;
+  ---color3: #c6c9ca;
+}
 
 /* navegation bar */
 .header-bg {
@@ -68,11 +72,12 @@ nav div a:hover {
     position: fixed;
     top: 0;
     left: 0;
-    height: 250px;
     width: 100%;
     background-color: #172a48;
     transition: 2s;
     transform: translateY(-100vh);
+    padding-bottom: 30px;
+
   }
   nav div {
     display: flex;
@@ -95,16 +100,24 @@ nav div a:hover {
 }
 
 /* cards */
-.cardSection-searchBook {
+.cardSection {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px,0.3fr));
-  grid-gap: 15px;
+  grid-gap: 50px;
   justify-content: center;
   margin: 5%;
 }
+.card {
+  display: flex;
+  flex-direction: column;
+  height: 650px;
+  justify-content: space-between;
+  text-align: center;
+  box-shadow: rgba(0, 0, 0, 0.35) 6px 6px 6px;
+}
 
 @media screen and (min-width: 900px) {
-  .cardSection-searchBook {
+  .cardSection {
     margin: 5% 10%;
   }
 }

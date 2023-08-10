@@ -27,7 +27,7 @@ function Modal({show, item, onClose}) {
                             <h2 className="font-bold text-2xl">{title}</h2>
                             <h4 className='italic'>{authors}</h4>
                             <h4 className='italic'>{publisher} <span className='publishDate'>{publishDate}</span></h4>
-                            <p className='h-10'>{subtitle}</p>
+                            <p className='h-10 text-justify'>{subtitle}</p>
                         </div>
                     </div>
                     <a href={more} target='_blank' rel="noreferrer"><button className='bg-[#0E2954] text-white outline-none border-none w-36 m-5 p-2'>More</button></a>

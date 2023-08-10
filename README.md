@@ -26,7 +26,7 @@
 <br>
 
 <h1 align="center">
-    <a href="">Live preview soon</a>
+    <a href="https://readmebooks.vercel.app/">See live preview</a>
 </h1>
 
 <br>

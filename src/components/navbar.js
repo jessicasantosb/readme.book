@@ -1,5 +1,4 @@
-import {useRef} from 'react'
-import React, {useState} from 'react'
+import React, {useState, useRef} from 'react'
 import {Link} from 'react-router-dom'
 import '../App'
 import {FaBars, FaTimes, FaBook} from 'react-icons/fa'
@@ -41,6 +40,7 @@ function Navbar() {
             <nav ref={navRef}>
                 <div>                    
                     <Link onClick={closeNav} to="/">Home</Link>
+                    <Link onClick={closeNav} to="/books">Books Catalog</Link>
                     <Link onClick={closeNav} to="/profile">Profile</Link>
                 </div>
                 <button className='nav-btn nav-close-btn' onClick={showNavbar}>
