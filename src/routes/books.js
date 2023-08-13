@@ -3,7 +3,7 @@ import axios from 'axios';
 import {motion as m} from 'framer-motion'
 import '../App'
 import image from '../images/painting.jpg'
-import { useAppContext } from '../components/context/appContext'
+import { useAppContext } from '../components/contexts/favoritesContext'
 //import CardCatalog from '../components/cardCatalog';
 
 function Books() {

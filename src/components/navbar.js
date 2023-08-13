@@ -41,7 +41,9 @@ function Navbar() {
                 <div>                    
                     <Link onClick={closeNav} to="/">Home</Link>
                     <Link onClick={closeNav} to="/books">Books Catalog</Link>
+                    <Link onClick={closeNav} to="/register">Register</Link>
                     <Link onClick={closeNav} to="/profile">Profile</Link>
+
                 </div>
                 <button className='nav-btn nav-close-btn' onClick={showNavbar}>
                     <FaTimes/>

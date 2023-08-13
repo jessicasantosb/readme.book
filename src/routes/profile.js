@@ -1,7 +1,7 @@
 import React from 'react'
 import '../App'
 import image from '../images/painting.jpg'
-import { useAppContext } from '../components/context/appContext'
+import { useAppContext } from '../components/contexts/favoritesContext'
 import {motion as m} from 'framer-motion'
 
 function Profile() {
