@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
 import './styles/index.css';
 import App from './App';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
@@ -8,7 +8,7 @@ import Register from './routes/register';
 import Login from './routes/login';
 import Profile from './routes/profile';
 import ErrorPage from './routes/errorPage';
-import Books from './routes/books'
+import Catalog from './routes/catalog'
 import FormSuccess from './routes/formSuccess';
 import FavoritesContext  from './components/contexts/favoritesContext';
 import {AuthProvider} from './components/contexts/authProvider';
@@ -29,7 +29,7 @@ const router = createBrowserRouter([
         path: "/login", element: <Login />,
       },
       {
-        path: "/books", element: <Books />,
+        path: "/catalog", element: <Catalog />,
       },
       {
         path: "/success", element: <FormSuccess />,

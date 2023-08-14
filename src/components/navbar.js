@@ -40,7 +40,7 @@ function Navbar() {
             <nav ref={navRef}>
                 <div>                    
                     <Link onClick={closeNav} to="/">Home</Link>
-                    <Link onClick={closeNav} to="/books">Books Catalog</Link>
+                    <Link onClick={closeNav} to="/catalog">Books Catalog</Link>
                     <Link onClick={closeNav} to="/register">Register</Link>
                     <Link onClick={closeNav} to="/profile">Profile</Link>
 

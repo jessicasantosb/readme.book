@@ -12,7 +12,7 @@ function FormSuccess() {
     }
     useEffect(() => {
         stopConffeti()
-    })
+    },[])
 
     return (
         <>
@@ -22,11 +22,11 @@ function FormSuccess() {
                     Thank you! Your book will be posted soon!
                 </h1>
                 <button className="bg-[#0E2954] text-white p-2 cursor-pointer">
-                    <Link to="/books">Go back to books catalog</Link>
+                    <Link to="/catalog">Go to books catalog</Link>
                 </button>
             </div> 
         </m.div>
-        <Confetti numberOfPieces={pieces}/>
+        <Confetti numberOfPieces={pieces} gravity={0.2}/>
         </>
     )
 }

@@ -10,8 +10,9 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 :root {
-  ---color2: #0E2954;
-  ---color3: #c6c9ca;
+  ---color1: #0E2954;
+  ---color2: #172a48;
+  ---color3: #81a1d5;
   ---color4: #e8e8e8;
 }
 
@@ -104,9 +105,9 @@ nav div a:hover {
 .cardSection {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px,0.3fr));
-  grid-gap: 50px;
+  grid-gap: 30px;
   justify-content: center;
-  margin: 5%;
+  margin: 2%;
 }
 .card {
   display: flex;
