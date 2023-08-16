@@ -5,7 +5,7 @@ import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import '../App'
 import {FaSearch} from 'react-icons/fa'
-import CardHome from './cardHome'
+import CardsSearch from './cardsSearch'
 
 function SearchBooks() {
 
@@ -100,7 +100,7 @@ function SearchBooks() {
                     </div>
                     <div className='cardSection'>
                         {
-                            <CardHome book={bookData} />
+                            <CardsSearch book={bookData} />
                         }
                     </div>
                 </div>

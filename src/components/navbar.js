@@ -40,10 +40,12 @@ function Navbar() {
             <nav ref={navRef}>
                 <div>                    
                     <Link onClick={closeNav} to="/">Home</Link>
-                    <Link onClick={closeNav} to="/catalog">Books Catalog</Link>
-                    <Link onClick={closeNav} to="/register">Register</Link>
-                    <Link onClick={closeNav} to="/profile">Profile</Link>
+                    <Link onClick={closeNav} to="/catalog">Catalog</Link>
+                    <div>
+                        <Link onClick={closeNav} to="/register">Register</Link>
+                        <Link onClick={closeNav} to="/login">Login</Link>
 
+                    </div>
                 </div>
                 <button className='nav-btn nav-close-btn' onClick={showNavbar}>
                     <FaTimes/>

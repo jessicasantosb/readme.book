@@ -1,8 +1,8 @@
 import React from 'react'
 import {motion as m} from 'framer-motion'
 import '../App'
-import image from '../images/painting.jpg'
-import BooksCatalog from '../components/booksCatalog'
+import CardsCatalog from '../components/cardsCatalog'
+import SearchBooks from '../components/searchBooks';
 
 function Catalog() {
 
@@ -13,12 +13,12 @@ function Catalog() {
             <div className='z-10 text-white font-bold '>
               <h1 className='flex flex-wrap text-6xl m-5 p-1 bg-black/40'>Catalog</h1>
             </div>
-            <img className='absolute top-0 left-0 w-full h-screen object-cover' src={image} alt="fantasy" />
+            <img className='absolute top-0 left-0 w-full h-screen object-cover' src='' alt="fantasy" />
         </header>
 
-        <section>
-          <BooksCatalog />
-        </section>
+          <CardsCatalog />
+
+          <SearchBooks/>
         
       </m.div>
       </>

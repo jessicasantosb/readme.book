@@ -1,8 +1,8 @@
 import React, {useState, useEffect}  from 'react'
 import axios from 'axios';
 import '../App'
-import { useAppContext } from '../components/contexts/favoritesContext'
-import Pagination from '../components/pagination'
+import { useAppContext } from './contexts/favoritesContext'
+import Pagination from './pagination'
 
 function BooksCatalog() {
   //setting books catalog
@@ -11,6 +11,7 @@ function BooksCatalog() {
   const [books, setBooks] = useState([])
   const [currentPage, setCurrentPage] = useState(1)
   const [postsPerPage, setPostPerPage] = useState(10)
+  const [sortType, setSortType] = useState('default');
 
   useEffect(() => {
     axios.get(API_url)
@@ -20,7 +21,7 @@ function BooksCatalog() {
 
   const lastPostIndex = currentPage * postsPerPage
   const firstPostIndex = lastPostIndex - postsPerPage
-  const currentPost = books.slice(firstPostIndex, lastPostIndex)
+  let currentPost = books.slice(firstPostIndex, lastPostIndex)
 
   //add card to profile
   const {favorites, addToFavorites, removeFromFavorites} = useAppContext()
@@ -29,21 +30,39 @@ function BooksCatalog() {
       return boolean
   }
 
+  //setting sort  
+  function ascending() {
+    let result = [...books]
+    if(result.length > 0) {
+      let ascending = result.sort((a,b) => a.title.localeCompare(b.title))
+      //currentPost = ascending.slice(firstPostIndex, lastPostIndex)
+    }     
+  }
+
+  function descending() {
+    let result = [...books]
+    if(result.length > 0) {
+      let descending = result.sort((b,a) => b.title.localeCompare(a.title))
+      //currentPost = descending.slice(firstPostIndex, lastPostIndex)
+    }
+  }
+
     return (
         <section className='py-9'>
-          <div className='cardSection'>
+          <div className='flex flex-col items-center justify-center m-9 text-[#0E2954]'>
+            <label htmlFor="sort">Sort by</label>
+            <select defaultValue='default' className='w-24 border border-[#0E2954] text-center'>
+              <option value="default">Default</option>
+              <option value="ascending"  onClick={() => ascending(sortType, setSortType)}>a - z</option>
+              <option value="descending" onClick={() => descending(sortType, setSortType)} >z - a</option>
+            </select>
+          </div>
+          <main className='cardSection'>
             {currentPost.map((book) => (
-            <div>
               <div key={book.id} className="card">
-                <div>
                   <img className="w-full h-56" src={book.image_url} alt="thumbnail"/>
-                </div>
-                <div>
                   <h2 className="font-bold text-xl text-[#0E2954] p-3">{book.title}</h2>
-                </div>
-                <div>
                   <h2 className="italic p-3 ">{book.authors}</h2>
-                </div>
                 <div>
                   {
                     bookOnListChecker(book.id) 
@@ -52,14 +71,12 @@ function BooksCatalog() {
                   }
                 </div>
               </div>
-            </div>
             ))}
-          </div>
+          </main>
           <div className='mx-auto'>
               <Pagination totalPosts={books.length} postsPerPage={postsPerPage} setCurrentPage={setCurrentPage} currentPage={currentPage}/>
-          </div>  
+          </div>
         </section>
-
     )
 }
 

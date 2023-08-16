@@ -1,6 +1,5 @@
 import React from 'react'
 import '../App'
-import image from '../images/painting.jpg'
 import { useAppContext } from '../components/contexts/favoritesContext'
 import {motion as m} from 'framer-motion'
 
@@ -20,7 +19,7 @@ function Profile() {
             <div className='z-10 text-white font-bold '>
               <h1 className='flex flex-wrap text-6xl m-5 p-1 bg-black/40'>Your Profile</h1>
             </div>
-            <img className='absolute top-0 left-0 w-full h-screen object-cover' src={image} alt="fantasy" />
+            <img className='absolute top-0 left-0 w-full h-screen object-cover' src='' alt="fantasy" />
         </div>
 
         <div className='cardSection'>
