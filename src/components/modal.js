@@ -16,21 +16,19 @@ function Modal({show, item, onClose}) {
 
     return (
         <>
-            <div className='fixed inset-0 bg-blue bg-[#0E2954] flex justify-center items-center w-screen h-screen z-20'>
-                <div className='relative bg-white p-4 min-h-[800px] w-3/5'>
+            <div className='fixed inset-0 bg-[#8CABFF] flex justify-center items-center w-screen h-screen z-20'>
+                <div className='relative bg-white p-4 min-h-[800px] w-3/5 rounded-xl'>
                     <button className='absolute top-4 right-4 outline-none border-none bg-transparent' onClick={onClose}>
-                        <FaTimes/>
+                        <FaTimes className='text-[#4477CE]'/>
                     </button>
                     <div className='flex justify-center items-center flex-col mt-3'>
-                        <img className='h-52 w-40 m-2' src={thumbnail} alt='book thumbnail'></img>
-                        <div className='mb-10'>
-                            <h2 className="font-bold text-2xl">{title}</h2>
-                            <h4 className='italic'>{authors}</h4>
-                            <h4 className='italic'>{publisher} <span className='publishDate'>{publishDate}</span></h4>
-                            <p className='h-10 text-justify'>{subtitle}</p>
-                        </div>
+                        <img className='h-36 m-2 rounded-xl' src={thumbnail} alt='book thumbnail'></img>
+                        <h2 className="text-[#4477CE] font-bold text-2xl py-2">{title}</h2>
+                        <h4 className='italic py-2'>{authors}</h4>
+                        <h4 className='text-sm italic'>{publisher} <span className='publishDate'>{publishDate}</span></h4>
+                        <p className='text-justify py-2'>{subtitle}</p>
                     </div>
-                    <a href={more} target='_blank' rel="noreferrer"><button className='bg-[#0E2954] text-white outline-none border-none w-36 m-5 p-2'>More</button></a>
+                    <a href={more} target='_blank' rel="noreferrer"><button className='bg-[#4477CE] text-white rounded-xl hover:scale-95 my-9 h-12 w-full'>More</button></a>
                 </div>
             </div>
         </>

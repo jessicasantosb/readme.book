@@ -3,6 +3,8 @@ import axios from 'axios';
 import '../App'
 import { useAppContext } from './contexts/favoritesContext'
 import Pagination from './pagination'
+import {FaBookmark, FaComments} from 'react-icons/fa'
+
 
 function BooksCatalog() {
   //setting books catalog
@@ -48,10 +50,10 @@ function BooksCatalog() {
   }
 
     return (
-        <section className='py-9'>
-          <div className='flex flex-col items-center justify-center m-9 text-[#0E2954]'>
-            <label htmlFor="sort">Sort by</label>
-            <select defaultValue='default' className='w-24 border border-[#0E2954] text-center'>
+        <section className='mx-5 mt-24'>
+          <div className='flex flex-col items-center justify-center m-9'>
+            <label className='text-[#35155D] text-lg pb-2' htmlFor="sort">Sort by</label>
+            <select defaultValue='default' className='w-24 border border-[#512B81] text-[#512B81] text-center rounded-lg p-1'>
               <option value="default">Default</option>
               <option value="ascending"  onClick={() => ascending(sortType, setSortType)}>a - z</option>
               <option value="descending" onClick={() => descending(sortType, setSortType)} >z - a</option>
@@ -59,21 +61,22 @@ function BooksCatalog() {
           </div>
           <main className='cardSection'>
             {currentPost.map((book) => (
-              <div key={book.id} className="card">
-                  <img className="w-full h-56" src={book.image_url} alt="thumbnail"/>
-                  <h2 className="font-bold text-xl text-[#0E2954] p-3">{book.title}</h2>
-                  <h2 className="italic p-3 ">{book.authors}</h2>
-                <div>
+              <div key={book.id} className="h-[650px] flex flex-col justify-between items-center shadow-lg shadow-[#512B81] p-2 rounded-2xl hover:scale-95">
+                  <img className="w-full h-56 rounded-xl" src={book.image_url} alt="thumbnail"/>
+                  <h2 className="font-bold text-xl text-[#35155D] py-3 text-center">{book.title}</h2>
+                  <h2 className="italic py-3 ">{book.authors}</h2>
+                <div className='flex self-end'>
                   {
                     bookOnListChecker(book.id) 
-                    ? <button onClick={() => removeFromFavorites(book.id)} className='bg-white text-[#0E2954] h-20 w-full p-2 cursor-pointer border-2 border-[#0E2954]'>Remove from Favorites</button>
-                    : <button onClick={() => addToFavorites(book)} className='bg-[#0E2954] text-white h-20 w-full p-2 cursor-pointer'>Add to Favorites</button>
+                    ? <button onClick={() => removeFromFavorites(book.id)}><FaBookmark className='text-[#35155D] h-5 w-5 cursor-pointer'/></button>
+                    : <button onClick={() => addToFavorites(book)}><FaBookmark className='text-[#35155D] opacity-40 h-5 w-5 cursor-pointer'/></button>
                   }
+                  <button><FaComments className='text-[#35155D] opacity-40 h-5 w-9 ml-2 cursor-pointer active:opacity-100'/></button>
                 </div>
               </div>
             ))}
           </main>
-          <div className='mx-auto'>
+          <div>
               <Pagination totalPosts={books.length} postsPerPage={postsPerPage} setCurrentPage={setCurrentPage} currentPage={currentPage}/>
           </div>
         </section>

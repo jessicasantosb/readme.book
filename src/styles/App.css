@@ -103,17 +103,3 @@ nav div a:hover {
   justify-content: center;
   margin: 2%;
 }
-.card {
-  display: flex;
-  flex-direction: column;
-  height: 650px;
-  justify-content: space-between;
-  text-align: center;
-  box-shadow: rgba(0, 0, 0, 0.35) 6px 6px 6px;
-}
-
-@media screen and (min-width: 900px) {
-  .cardSection {
-    margin: 5% 10%;
-  }
-}

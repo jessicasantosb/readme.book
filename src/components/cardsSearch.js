@@ -21,21 +21,15 @@ function CardHome({book}) {
                     if (thumbnail !== undefined) {
                         return (
                             <>
-                            <div>
-                              <div> 
-                                <div className="bg-[#0E2954] p-2 text-white min-h-[550px] hover:scale-95" onClick={() => {setShow(true); setItem(item)}}>
-                                    <img className='w-32 h-44 mx-auto' src={thumbnail} alt="book thumbnail" />
-                                    <div className="p-4">
-                                        <h2 className="font-bold text-xl">{title}</h2>
-                                        <h4 className='italic'>{authors}</h4>
-                                    </div>
+                                <div className="flex flex-col justify-between items-center border-[#4477CE] shadow-lg shadow-[#8CABFF] p-2 rounded-2xl min-h-[550px] cursor-pointer hover:scale-95" onClick={() => {setShow(true); setItem(item)}}>
+                                    <img className='w-32 h-44 rounded-xl' src={thumbnail} alt="book thumbnail" />
+                                    <h2 className="font-bold text-lg">{title}</h2>
+                                    <h4 className='italic text-sm pb-2'>{authors}</h4>
                                 </div>
                                 <Modal show = {show} item = {bookItem} onClose = {() => setShow(false)}/>
-                              </div>   
-                            </div>
                             </>
                         )
-                    }                         
+                    }
                 })
             }
         </>
