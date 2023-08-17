@@ -59,24 +59,24 @@ function Login() {
     }
 
     return (
-        <section className="bg-[#0E2954] w-full h-screen flex items-center justify-center">
-            <main className="w-96 p-14 bg-white">
+        <section className="w-full h-screen flex items-center justify-center">
+            <main className="w-96 p-14 border border-[#35155D] shadow-lg shadow-[#512B81] rounded-2xl">
                 <p ref={errRef} className={errMsg ? "errMsg" : "hidden"} aria-live="assertive">{errMsg}</p>
-                <h1 className="text-center text-xl pb-5">Sign in</h1>
+                <h1 className="text-[#35155D] text-center text-xl pb-5">Sign in</h1>
 
                 <form on onSubmit={handleSubmit}>
                     <label htmlFor="username" className="flex gap-2 items-center">Username:</label>
-                    <input type="text" id="username" ref={userRef} value={user} onChange={(e) => setUser(e.target.value)} required className="bg-[#e8e8e8] w-full"/>
+                    <input type="text" id="username" ref={userRef} value={user} onChange={(e) => setUser(e.target.value)} required className="border border-[#35155D] rounded-xl text-[#35155D] p-1 w-full"/>
 
                     <label htmlFor="password" className="flex gap-2 items-center">Password:</label>
-                    <input type="password" id="password" value={password}  onChange={(e) => setPassword(e.target.value)} required className="bg-[#e8e8e8] w-full"/>
+                    <input type="password" id="password" value={password}  onChange={(e) => setPassword(e.target.value)} required className="border border-[#35155D] rounded-xl text-[#35155D] p-1 w-full"/>
                     
-                    <button className="w-full bg-[#0E2954] text-white my-5 p-2">Sign up</button>
+                    <button className="bg-[#512B81] text-white rounded-xl hover:scale-95 my-9 mr-5 h-12 w-full">Sign up</button>
 
                     <p>Don't have a account?<br/>
-                        <span className="text-[#0E2954]">
+                        <span className="text-[#4477CE]">
                             <Link to='/register'>Register</Link>
-                        </span>                    
+                        </span>
                     </p>
 
                 </form>

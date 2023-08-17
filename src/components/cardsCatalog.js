@@ -61,7 +61,7 @@ function BooksCatalog() {
           </div>
           <main className='cardSection'>
             {currentPost.map((book) => (
-              <div key={book.id} className="h-[650px] flex flex-col justify-between items-center shadow-lg shadow-[#512B81] p-2 rounded-2xl hover:scale-95">
+              <div key={book.id} className="h-[650px] flex flex-col justify-between items-center shadow-lg shadow-[#512B81] p-2 rounded-2xl hover:shadow-black/50">
                   <img className="w-full h-56 rounded-xl" src={book.image_url} alt="thumbnail"/>
                   <h2 className="font-bold text-xl text-[#35155D] py-3 text-center">{book.title}</h2>
                   <h2 className="italic py-3 ">{book.authors}</h2>

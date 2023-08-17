@@ -79,55 +79,55 @@ function Register() {
     }
 
     return (
-        <section className="bg-[#0E2954] w-full h-screen flex items-center justify-center">
-            <main className="w-96 p-14 bg-white">
+        <section className="w-full h-screen flex items-center justify-center">
+            <main className="w-96 p-14 border border-[#4477CE] shadow-lg shadow-[#8CABFF] rounded-2xl">
                 <p ref={errRef} className={`text-red-400${errMsg ? "errMsg" : "hidden"}`} aria-live="assertive">{errMsg}</p>
-                <h1 className="text-center text-xl pb-5">Register</h1>
+                <h1 className="text-[#4477CE] text-center text-xl pb-5">Register</h1>
 
                 <form onSubmit={handleSubmit}>
-                    <label htmlFor="username" className="flex gap-2 items-center">Username: 
+                    <label htmlFor="username" className="flex gap-2 items-center text-[512B81]">Username: 
                         <span className={validName ? "valid" : "hidden"}>
-                            <FaCheck />
+                            <FaCheck color="#4477CE"/>
                         </span> 
                         <span className={validName || !user ? "hidden" : "invalid"}>
                             <FaTimes />
                         </span>
                     </label>
-                    <input type="text" id="username" ref={userRef} autoComplete="off" onChange={(e) => setUser(e.target.value)} required aria-invalid={validName ? "false" : "true"} aria-describedby="usernameNote" onFocus={() => setUserFocus(true)} onBlur={() => setUserFocus(false)} className="bg-[#e8e8e8] w-full"/>
+                    <input type="text" id="username" ref={userRef} autoComplete="off" onChange={(e) => setUser(e.target.value)} required aria-invalid={validName ? "false" : "true"} aria-describedby="usernameNote" onFocus={() => setUserFocus(true)} onBlur={() => setUserFocus(false)} className="border border-[#8CABFF] rounded-xl text-[#35155D] p-1 w-full"/>
                     <p id="usernameNote" className={`bg-[#c6c9ca] text-sm p-2 m-2 rounded-xl ${userFocus && user && !validName ? "instructions" : "hidden"}`}>
-                        <FaInfoCircle/><br/>- 4 to 24 characters<br/>- Must begin with a letter.<br/>- Letters, numbers, underscores and hyphens allowed.
+                        <FaInfoCircle color="#4477CE"/><br/>- 4 to 24 characters<br/>- Must begin with a letter.<br/>- Letters, numbers, underscores and hyphens allowed.
                     </p>
 
                     <label htmlFor="password" className="flex gap-2 items-center">Password: 
                         <span className={validPassword ? "valid" : "hidden"}>
-                            <FaCheck />
+                            <FaCheck color="#4477CE"/>
                         </span> 
                         <span className={validPassword || !password ? "hidden" : "invalid"}>
                             <FaTimes />
                         </span>
                     </label>
-                    <input type="password" id="password"  onChange={(e) => setPassword(e.target.value)} required aria-invalid={validPassword ? "false" : "true"} aria-describedby="passwordNote" onFocus={() => setPasswordFocus(true)} onBlur={() => setPasswordFocus(false)} className="bg-[#e8e8e8] w-full"/>
+                    <input type="password" id="password"  onChange={(e) => setPassword(e.target.value)} required aria-invalid={validPassword ? "false" : "true"} aria-describedby="passwordNote" onFocus={() => setPasswordFocus(true)} onBlur={() => setPasswordFocus(false)} className="border border-[#8CABFF] rounded-xl text-[#35155D] p-1 w-full"/>
                     <p id="passwordNote" className={`bg-[#c6c9ca] text-sm p-2 m-2 rounded-xl ${passwordFocus && !validPassword ? "instructions" : "hidden"}`}>
-                        <FaInfoCircle/><br/>- 8 to 24 characters<br/>- Must include uppercase and lowercase letters, a number and a special character<br/>- Allowed special characters: <span arial-label="exclamation mark">!</span> <span arial-label="at symbol">@</span> <span arial-label="hashtag">#</span> <span arial-label="dolar sign">$</span> <span arial-label="percent">%</span>
+                        <FaInfoCircle color="#4477CE"/><br/>- 8 to 24 characters<br/>- Must include uppercase and lowercase letters, a number and a special character<br/>- Allowed special characters: <span arial-label="exclamation mark">!</span> <span arial-label="at symbol">@</span> <span arial-label="hashtag">#</span> <span arial-label="dolar sign">$</span> <span arial-label="percent">%</span>
                     </p>
 
                     <label htmlFor="confirmPassword" className="flex gap-2 items-center">Confirm Password: 
                         <span className={validMatch && matchPassword ? "valid" : "hidden"}>
-                            <FaCheck />
+                            <FaCheck color="#4477CE"/>
                         </span> 
                         <span className={validMatch || !matchPassword ? "hidden" : "invalid"}>
                             <FaTimes />
                         </span>
                     </label>
-                    <input type="password" id="confirmPassword"  onChange={(e) => setMatchPassword(e.target.value)} required aria-invalid={validMatch ? "false" : "true"} aria-describedby="confirmNote" onFocus={() => setMatchFocus(true)} onBlur={() => setMatchFocus(false)} className="bg-[#e8e8e8] w-full"/>
+                    <input type="password" id="confirmPassword"  onChange={(e) => setMatchPassword(e.target.value)} required aria-invalid={validMatch ? "false" : "true"} aria-describedby="confirmNote" onFocus={() => setMatchFocus(true)} onBlur={() => setMatchFocus(false)} className="border border-[#8CABFF] rounded-xl text-[#35155D] p-1 w-full"/>
                     <p id="confirmNote" className={`bg-[#c6c9ca] text-sm p-2 m-2 rounded-xl ${matchFocus && !validMatch ? "instructions" : "hidden"}`}>
-                        <FaInfoCircle/><br/>- Must match the first password input field.
+                        <FaInfoCircle color="#4477CE"/><br/>- Must match the first password input field.
                     </p>
 
-                    <button disabled={!validName || !validPassword || !validMatch ? true : false} className="w-full bg-[#0E2954] text-white my-5 p-2">Sign up</button>
+                    <button disabled={!validName || !validPassword || !validMatch ? true : false} className="cursor-pointer bg-[#4477CE] text-white rounded-xl hover:scale-95 my-9 h-12 w-full">Sign up</button>
 
                     <p>Already registered?<br/>
-                        <span className="text-[#0E2954]">
+                        <span className="text-[#35155D]">
                             <Link to='/login'>Login</Link>
                         </span>                    
                     </p>

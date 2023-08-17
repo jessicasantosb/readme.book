@@ -16,12 +16,12 @@ function FormSuccess() {
 
     return (
         <>
-        <m.div initial={{opacity: 0}} animate={{opacity: 1}} exit={{opacity: 0}} className="bg-[#0E2954] h-screen w-screen flex align-center justify-center">
+        <m.div initial={{opacity: 0}} animate={{opacity: 1}} exit={{opacity: 0}} className="h-screen w-screen flex align-center justify-center">
             <div className="bg-white h-96 w-full mt-36 p-14 text-center">
-                <h1 className="pb-10 text-4xl">
+                <h1 className="pb-10 text-4xl text-[#512B81]">
                     Thank you! Your book will be posted soon!
                 </h1>
-                <button className="bg-[#0E2954] text-white p-2 cursor-pointer">
+                <button className="bg-[#512B81] text-white rounded-xl hover:scale-95 my-9 h-12 w-56">
                     <Link to="/catalog">Go to books catalog</Link>
                 </button>
             </div> 
