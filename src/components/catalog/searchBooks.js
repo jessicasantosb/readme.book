@@ -3,7 +3,6 @@ import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
-import '../App'
 import {FaSearch} from 'react-icons/fa'
 import CardsSearch from './cardsSearch'
 
@@ -81,7 +80,7 @@ function SearchBooks() {
                   <FaSearch/>
               </button>
             </div>
-            <div className='cardSection'>
+            <div className='grid grid-cols-fit gap-2 my-9 '>
                 {
                     <CardsSearch book={bookData} />
                 }

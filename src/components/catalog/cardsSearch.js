@@ -1,5 +1,4 @@
 import React, {useState} from 'react'
-import '../App'
 import Modal from './modal'
 
 function CardHome({book}) {
@@ -21,9 +20,9 @@ function CardHome({book}) {
                     if (thumbnail !== undefined) {
                         return (
                             <>
-                                <div className="flex flex-col justify-between items-center border-[#4477CE] shadow-lg shadow-[#8CABFF] p-2 rounded-2xl min-h-[550px] cursor-pointer hover:scale-95" onClick={() => {setShow(true); setItem(item)}}>
-                                    <img className='w-32 h-44 rounded-xl' src={thumbnail} alt="book thumbnail" />
-                                    <h2 className="font-bold text-lg">{title}</h2>
+                                <div className="flex flex-col justify-between items-center border-[#4477CE] shadow-lg shadow-[#8CABFF] p-2 rounded-2xl min-h-[500px]cursor-pointer hover:scale-95" onClick={() => {setShow(true); setItem(item)}}>
+                                    <img className='w-24 rounded-xl' src={thumbnail} alt="book thumbnail" />
+                                    <h2 className="font-bold text-lg text-center">{title}</h2>
                                     <h4 className='italic text-sm pb-2'>{authors}</h4>
                                 </div>
                                 <Modal show = {show} item = {bookItem} onClose = {() => setShow(false)}/>

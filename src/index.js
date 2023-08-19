@@ -25,7 +25,7 @@ const router = createBrowserRouter([
       {
         path: "/register", element: <Register />,
       },
-       {
+      {
         path: "/login", element: <Login />,
       },
       {
@@ -35,8 +35,11 @@ const router = createBrowserRouter([
         path: "/success", element: <FormSuccess />,
       },
       // private route
+      // {
+      //   path: "/profile", element: <RequireAuth><Profile /></RequireAuth>,
+      // },
       {
-        path: "/profile", element: <RequireAuth><Profile /></RequireAuth>,
+        path: "/profile", element: <Profile />,
       },
     ]
   },

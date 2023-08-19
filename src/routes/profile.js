@@ -1,54 +1,54 @@
 import React from 'react'
 import '../App'
-import { useAppContext } from '../components/contexts/favoritesContext'
+import {Link} from 'react-router-dom'
 import {motion as m} from 'framer-motion'
+import {FaBookmark, FaBook} from 'react-icons/fa'
+import Library from '../components/profile/library'
+import Recommendations from '../components/profile/recommendations'
 
 function Profile() {
 
-    //add card to favorites
-    const {favorites, addToFavorites, removeFromFavorites} = useAppContext()
-    function favoriteChecker(id) {
-        const boolean = favorites.some((book) => book.id === id)
-        return boolean
-    }
-
     return (
-      <>
-      <m.div initial={{opacity: 0.6}} animate={{opacity: 1}} exit={{opacity: 0}}>
-        <div className='relative h-screen w-full flex items-center justify-center bg-black/30 pr-14'>
-            <div className='z-10 text-white font-bold '>
-              <h1 className='flex flex-wrap text-6xl m-5 p-1 bg-black/40'>Your Profile</h1>
+      <m.section initial={{opacity: 0.6}} animate={{opacity: 1}} exit={{opacity: 0}}>
+        <div className='relative h-screen w-full flex items-center justify-center p-5'>
+            <FaBookmark className='absolute top-0 left-0 z-10' size={220} color='#4477CE'/>
+            <div className='flex flex-col items-center justify-center z-10'>
+              <h1 className='text-white font-bold text-9xl text-center pt-28 md:text-7xl' >Your Profile</h1>
+              <p className='text-center text-xl text-white/60 pb-9 pt-20'>Pick your favorites from <span className=''>Catalog</span></p>
+              <button className='bg-[#512B81] text-white rounded-xl shadow-sm shadow-[#8CABFF] hover:scale-95 h-12'>
+                <Link className='p-14' to="/login">Sign in</Link>
+              </button>
             </div>
-            <img className='absolute top-0 left-0 w-full h-screen object-cover' src='' alt="fantasy" />
+            <div id="area" className='absolute top-0 left-0 w-full h-screen object-cover'>
+                <ul class="circles">
+                  <li></li>
+                  <li></li>
+                  <li></li>
+                  <li></li>
+                  <li></li>
+                  <li></li>
+                  <li></li>
+                  <li></li>
+                  <li></li>
+                  <li></li>
+                </ul>
+            </div>    
         </div>
 
-        <div className='cardSection'>
-            {favorites.length > 0 ? (favorites.map((book) => (
-            <div>
-              <div key={book.id} className="card">
-                <div>
-                  <img className="w-full h-56" src={book.image_url} alt="thumbnail"/>
-                </div>
-                <div>
-                  <h2 className="font-bold text-xl text-[#0E2954] p-3">{book.title}</h2>
-                </div>
-                <div>
-                  <h2 className="italic p-3">{book.authors}</h2>
-                </div>
-                <div>
-                  {
-                    favoriteChecker(book.id) 
-                    ? <button onClick={() => removeFromFavorites(book.id)} className='bg-white text-[#0E2954] h-20 w-full p-2 cursor-pointer border-2 border-[#0E2954]'>Remove from Favorites</button>
-                    : <button onClick={() => addToFavorites(book)} className='bg-[#0E2954] text-white h-20 w-full p-2 cursor-pointer'>Add to Favorites</button>
-                  }
-                </div>
-              </div>
-            </div>
-            ))) : <h1 className='h-96 p-10'>This is where your preferred books will be displayed.</h1> }
-        </div>
-      </m.div>         
-      </>
+      <Library/>
+
+      <div class='flex'>
+        <div className='w-full relative m-5 border-b-[3px] border-[#512B81]'></div>
+        <FaBook className='relative top-2 text-[#512B81]' size={70} />
+        <div className='w-full relative m-5 border-b-[3px] border-[#512B81] '></div>
+      </div>
+
+      <Recommendations/>
+
+      </m.section> 
     )
+
+
 }
 
 export default Profile

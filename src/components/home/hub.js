@@ -1,5 +1,5 @@
 import React from 'react'
-import imageHub from '../images/hub.jpg'
+import imageHub from '../../images/hub.jpg'
 import {Link} from 'react-router-dom'
 
 function Hub() {

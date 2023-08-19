@@ -8,8 +8,8 @@ function Footer() {
         <footer className='shadow-2xl shadow-black text-white'>
             <div className='w-full p-5 bg-[#512B81] flex items-start justify-center flex-row gap-14'>
                 <div className='flex flex-col'>
-                    <h3 className='text-lg pb-2 underline'>Copyrights</h3>
-                    <p>Home image by <a className='text-[#8CABFF] opacity-60 hover:text-white' href="https://www.freevector.com/book-worm-28907">FreeVector.com</a></p>
+                    <h3 className='text-lg pb-2 underline'>Copyrights</h3>                    
+                    <p>Home image by <a className='text-[#8CABFF] opacity-60 hover:text-white' href="https://www.freepik.com/free-photo/old-books-arrangement-with-copy-space_13130601.htm#query=book&position=10&from_view=keyword&track=sph">Freepik</a></p>
                     <p>Hub image by <a className='text-[#8CABFF] opacity-60 hover:text-white' href="https://www.vecteezy.com/free-vector/woman">Vecteezy</a></p>
                     <p>Catalog image by <a className='text-[#8CABFF] opacity-60 hover:text-white' href="https://www.freevector.com/bookworm-29961">FreeVector.com</a></p>
 

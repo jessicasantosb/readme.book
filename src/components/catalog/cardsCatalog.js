@@ -1,7 +1,6 @@
 import React, {useState, useEffect}  from 'react'
 import axios from 'axios';
-import '../App'
-import { useAppContext } from './contexts/favoritesContext'
+import { useAppContext } from '../contexts/favoritesContext'
 import Pagination from './pagination'
 import {FaBookmark, FaComments} from 'react-icons/fa'
 
@@ -50,7 +49,7 @@ function BooksCatalog() {
   }
 
     return (
-        <section className='mx-5 mt-24'>
+        <section className='px-5 pt-24 w-full bg-white relative -top-[1rem]'>
           <div className='flex flex-col items-center justify-center m-9'>
             <label className='text-[#35155D] text-lg pb-2' htmlFor="sort">Sort by</label>
             <select defaultValue='default' className='w-24 border border-[#512B81] text-[#512B81] text-center rounded-lg p-1'>
@@ -59,7 +58,7 @@ function BooksCatalog() {
               <option value="descending" onClick={() => descending(sortType, setSortType)} >z - a</option>
             </select>
           </div>
-          <main className='cardSection'>
+          <main className='grid grid-cols-fit gap-4'>
             {currentPost.map((book) => (
               <div key={book.id} className="h-[650px] flex flex-col justify-between items-center shadow-lg shadow-[#512B81] p-2 rounded-2xl hover:shadow-black/50">
                   <img className="w-full h-56 rounded-xl" src={book.image_url} alt="thumbnail"/>
