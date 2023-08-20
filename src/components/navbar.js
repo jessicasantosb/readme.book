@@ -32,19 +32,18 @@ function Navbar() {
     }
 
     return (
-        <header className={color ? "header header-bg" : "header"}>
-            <div className='logo'>
-                <FaBook color='white'/>
+        <header className={`bg-[#35155D] fixed flex items-center justify-between h-[80px] w-full px-5 z-20 ${color ? "shadow-lg shadow-black/40" : ""}`}>
+            <div className='flex items-center justify-center gap-2 text-white'>
+                <FaBook/>
                 <h3>Readme.Books</h3>
             </div>
-            <nav ref={navRef}>
-                <div>                    
-                    <Link onClick={closeNav} to="/">Home</Link>
-                    <Link onClick={closeNav} to="/catalog">Catalog</Link>
-                    <div>
-                        <Link onClick={closeNav} to="/register">Register</Link>
-                        <Link onClick={closeNav} to="/login">Login</Link>
-
+            <nav className='w-full md:fixed md:top-0 md:left-0 md:bg-[#512B81] md:py-14 md:transform-y-[-100vh] md:ease md:duration-2000 md:shadow-lg md:shadow-black/40' ref={navRef}>
+                <div className='flex items-center justify-end gap-5 md:flex md:flex-col md:items-center md:justify-center pt-9 '>
+                    <Link className='text-white p-2 hover:underline' onClick={closeNav} to="/">Home</Link>
+                    <Link className='text-white p-2 hover:underline' onClick={closeNav} to="/catalog">Catalog</Link>
+                    <div className='pl-44'>
+                        <Link className='bg-white text-[#35155D] rounded-sm shadow-sm shadow-white p-2 mr-5 hover:scale-95 hover:bg-[#35155D] hover:text-white hover:border-white' onClick={closeNav} to="/login">Login</Link>
+                        <Link className='bg-white text-[#35155D] rounded-sm shadow-sm shadow-white p-2 hover:scale-95 hover:bg-[#4477CE] hover:text-white hover:border-white' onClick={closeNav} to="/register">Register</Link>
                     </div>
                 </div>
                 <button className='nav-btn nav-close-btn' onClick={showNavbar}>

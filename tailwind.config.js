@@ -13,7 +13,7 @@ module.exports = {
       gridTemplateColumns: {
         'fit': 'repeat(auto-fit, minmax(200px,0.3fr))',
       }
-    }
+    },
   },
   plugins: [],
 }
