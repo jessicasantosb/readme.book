@@ -1,9 +1,9 @@
 import React, {useState, useEffect}  from 'react'
 import axios from 'axios';
+import {useNavigate} from 'react-router-dom'
 import { useAppContext } from '../contexts/favoritesContext'
 import Pagination from './pagination'
 import {FaBookmark, FaComments} from 'react-icons/fa'
-
 
 function BooksCatalog() {
   //setting books catalog
@@ -12,7 +12,8 @@ function BooksCatalog() {
   const [books, setBooks] = useState([])
   const [currentPage, setCurrentPage] = useState(1)
   const [postsPerPage, setPostPerPage] = useState(10)
-  const [sortType, setSortType] = useState('default');
+  const [sortType, setSortType] = useState('default')
+  const navigate = useNavigate()
 
   useEffect(() => {
     axios.get(API_url)
@@ -60,7 +61,7 @@ function BooksCatalog() {
           </div>
           <main className='grid grid-cols-fit gap-4'>
             {currentPost.map((book) => (
-              <div key={book.id} className="h-[650px] flex flex-col justify-between items-center shadow-lg shadow-[#512B81] p-2 rounded-2xl hover:shadow-black/50">
+              <div className="h-[650px] flex flex-col justify-between items-center shadow-lg shadow-[#512B81] p-2 rounded-2xl hover:shadow-black/50">
                   <img className="w-full h-56 rounded-xl" src={book.image_url} alt="thumbnail"/>
                   <h2 className="font-bold text-xl text-[#35155D] py-3 text-center">{book.title}</h2>
                   <h2 className="italic py-3 ">{book.authors}</h2>
@@ -70,7 +71,7 @@ function BooksCatalog() {
                     ? <button onClick={() => removeFromFavorites(book.id)}><FaBookmark className='text-[#35155D] h-5 w-5 cursor-pointer'/></button>
                     : <button onClick={() => addToFavorites(book)}><FaBookmark className='text-[#35155D] opacity-40 h-5 w-5 cursor-pointer'/></button>
                   }
-                  <button><FaComments className='text-[#35155D] opacity-40 h-5 w-9 ml-2 cursor-pointer active:opacity-100'/></button>
+                <FaComments onClick={() => navigate(`/books/${book.id}`)} className='text-[#35155D] h-5 w-9 ml-2 cursor-pointer active:opacity-70'/>
                 </div>
               </div>
             ))}

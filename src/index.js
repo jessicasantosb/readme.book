@@ -9,6 +9,7 @@ import Login from './routes/login';
 import Profile from './routes/profile';
 import ErrorPage from './routes/errorPage';
 import Catalog from './routes/catalog'
+import BooksInteraction from './components/catalog/booksInteraction';
 import FormSuccess from './routes/formSuccess';
 import FavoritesContext  from './components/contexts/favoritesContext';
 import {AuthProvider} from './components/contexts/authProvider';
@@ -30,6 +31,9 @@ const router = createBrowserRouter([
       },
       {
         path: "/catalog", element: <Catalog />,
+      },
+      {
+        path: "/books/:id", element: <BooksInteraction />,
       },
       {
         path: "/success", element: <FormSuccess />,
