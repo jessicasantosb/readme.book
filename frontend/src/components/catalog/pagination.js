@@ -10,7 +10,7 @@ function Pagination({totalPosts, postsPerPage, setCurrentPage, currentPage}) {
     return(
         <div className='flex justify-center items-center text-white gap-2 my-9'>
             {pages.map((page, index) => {
-                return <button key={index} onClick={() => setCurrentPage(page)} className={`bg-[#35155D] p-2 rounded-xl w-9 ${page == currentPage ? 'bg-white text-[#35155D] border border-[#512B81]' : ''}`}>{page}</button>
+                return <button key={index} onClick={() => setCurrentPage(page)} className={`bg-[#35155D] p-2 rounded-xl w-9 ${page === currentPage ? 'bg-white text-[#35155D] border border-[#512B81]' : ''}`}>{page}</button>
             })}
         </div>
     )

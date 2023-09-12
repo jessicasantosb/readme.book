@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import Modal from './modal'
 
-function CardHome({book}) {
+function CardSearch({book}) {
     //setting modal
     const [show, setShow] = useState(false)
 
@@ -35,4 +35,4 @@ function CardHome({book}) {
     )
 }
 
-export default CardHome
+export default CardSearch
