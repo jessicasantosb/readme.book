@@ -1,22 +1,19 @@
 import { useRef, useState, useEffect } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
-import useAuth from "../components/hooks/useAuth";
+import Cookies from "universal-cookie";
 
 function Login() {
-  const loginUrl = "/login";
-
-  const { setAuth } = useAuth();
-
-  const navigate = useNavigate();
-  const location = useLocation();
-  const from = location.state?.from?.pathname || "/";
-
+  const cookies = new Cookies();
   const userRef = useRef();
   const errRef = useRef();
+
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errMsg, setErrMsg] = useState("");
+  const [login, setLogin] = useState(false);
+
+  const loginUrl = "http://localhost:5000/login";
 
   useEffect(() => {
     userRef.current.focus();
@@ -26,37 +23,37 @@ function Login() {
     setErrMsg("");
   }, [username, password]);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
-    try {
-      const response = await axios.post(
-        loginUrl,
-        JSON.stringify({ username, password }),
-        {
-          headers: { "Content-Type": "application/json" },
-          withCredentials: true,
+    const configuration = {
+      method: "post",
+      url: loginUrl,
+      data: {
+        username,
+        password,
+      },
+    };
+    axios(configuration)
+      .then((result) => {
+        setLogin(true)
+        cookies.set("token", result.data.token, {
+          path: "/",
+        });
+        window.location.href = "/profile";
+      })
+      .catch((err) => {
+        if (!err?.response) {
+          setErrMsg("No server response");
+        } else if (err.reponse?.status === 400) {
+          setErrMsg("Missing username or password");
+        } else if (err.response?.status === 401) {
+          setErrMsg("Unauthorized");
+        } else {
+          setErrMsg("Login failed");
         }
-      );
-      console.log(JSON.stringify(response?.data));
-      const accessToken = response?.data?.accessToken;
-      const roles = response?.data?.roles;
-      setAuth({ username, password, roles, accessToken });
-      setUsername("");
-      setPassword("");
-      navigate(from, { replace: true });
-    } catch (err) {
-      if (!err?.response) {
-        setErrMsg("No server response");
-      } else if (err.reponse?.status === 400) {
-        setErrMsg("Missing username or password");
-      } else if (err.response?.status === 401) {
-        setErrMsg("Unauthorized");
-      } else {
-        setErrMsg("Login failed");
-      }
-      errRef.current.focus();
-    }
+        errRef.current.focus();
+      });
   };
 
   return (
@@ -97,9 +94,10 @@ function Login() {
             className="border border-[#35155D] rounded-xl text-[#35155D] p-1 w-full"
           />
 
-          <button 
-          onClick={(e) => handleSubmit(e)}
-          className="bg-[#512B81] text-white rounded-xl hover:scale-95 my-9 mr-5 h-12 w-full">
+          <button
+            onClick={(e) => handleSubmit(e)}
+            className="bg-[#512B81] text-white rounded-xl hover:scale-95 my-9 mr-5 h-12 w-full"
+          >
             Sign up
           </button>
 

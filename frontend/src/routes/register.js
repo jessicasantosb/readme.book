@@ -7,7 +7,7 @@ function Register() {
   const usernameRegex = /^[a-zA-Z][a-zA-Z0-9-_]{3,23}$/;
   const passwordRegex =
     /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
-  const registerUrl = "/register";
+  const registerUrl = "http://localhost:5000/register";
 
   const userRef = useRef();
   const errRef = useRef();
@@ -25,6 +25,8 @@ function Register() {
   const [matchFocus, setMatchFocus] = useState(false);
 
   const [errMsg, setErrMsg] = useState("");
+
+  const [register, setRegister] = useState(false);
 
   useEffect(() => {
     userRef.current.focus();
@@ -54,27 +56,24 @@ function Register() {
       return;
     }
     try {
-      const response = await axios.post(
-        registerUrl,
-        JSON.stringify({ username, password }),
-        {
-          headers: { "Content-Type": "application/json" },
-          withCredentials: true,
-        }
-      );
-      console.log(response?.data);
-      console.log(response?.accessToken);
-      console.log(JSON.stringify(response));
-      setUsername("");
-      setPassword("");
-      setMatchPassword("");
+      const configuration = {
+        method: "post",
+        url: registerUrl,
+        data: {
+          username,
+          password,
+        },
+      };
+      axios(configuration).then((result) => {
+        setRegister(true);
+      });
     } catch (err) {
       if (!err?.response) {
-        setErrMsg("No Server Response");
+        setErrMsg("No server response");
       } else if (err.response?.status === 409) {
-        setErrMsg("Username Taken");
+        setErrMsg("Username taken");
       } else {
-        setErrMsg("Registration Failed");
+        setErrMsg("Registration failed");
       }
       errRef.current.focus();
     }
@@ -85,12 +84,19 @@ function Register() {
       <main className="w-96 p-14 border border-[#4477CE] shadow-lg shadow-[#8CABFF] rounded-2xl">
         <p
           ref={errRef}
-          className={`text-red-400${errMsg ? "errMsg" : "hidden"}`}
+          className={`text-red-400 text-center${errMsg ? "errMsg" : "hidden"}`}
           aria-live="assertive"
         >
           {errMsg}
+          {register ? (
+            <p className="text-green-700 text-center">
+              You Are Registered Successfully
+            </p>
+          ) : (
+            ""
+          )}
         </p>
-        <h1 className="text-[#4477CE] text-center text-xl pb-5">Register</h1>
+        <h1 className="text-[#4477CE] text-center text-xl py-5">Register</h1>
 
         <form action="POST" onSubmit={(e) => handleSubmit(e)}>
           <label

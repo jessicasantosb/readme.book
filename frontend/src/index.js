@@ -14,7 +14,7 @@ import FormSuccess from "./routes/formSuccess";
 import BooksInteraction from "./components/catalog/booksInteraction";
 import FavoritesContext from "./components/contexts/favoritesContext";
 import { AuthProvider } from "./components/contexts/authProvider";
-import RequireAuth from "./components/requireAuth";
+import RequireAuth from "./components/protectedRoutes";
 
 const router = createBrowserRouter([
   {

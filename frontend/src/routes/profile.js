@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
+import axios from "axios";
+import Cookies from "universal-cookie";
 import "../App";
 import { Link, useLocation } from "react-router-dom";
 import { motion as m } from "framer-motion";
@@ -7,7 +9,27 @@ import Library from "../components/profile/library";
 import Recommendations from "../components/profile/recommendations";
 
 function Profile() {
+  const cookies = new Cookies();
+  const token = cookies.get("token");
   const location = useLocation();
+
+  useEffect(() => {
+    const configuration = {
+      method: "get",
+      url: "http://localhost:5000/profile",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
+
+    axios(configuration)
+      .then((result) => {
+        console.log(result.data.message);
+      })
+      .catch((error) => {
+        error = new Error();
+      });
+  }, []);
 
   return (
     <m.section
