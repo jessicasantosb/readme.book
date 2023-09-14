@@ -16,7 +16,7 @@ function Profile() {
   useEffect(() => {
     const configuration = {
       method: "get",
-      url: "http://localhost:5000/profile",
+      url: "https://readmebooks.vercel.app/profile",
       headers: {
         Authorization: `Bearer ${token}`,
       },
