@@ -34,6 +34,8 @@
 ## Main tools used
 - React
 - Tailwind
+- Node.js
+- MongoDB
 
 <br>
 
