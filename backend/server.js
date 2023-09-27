@@ -95,18 +95,6 @@ app.post("/login", (req, res) => {
     });
 });
 
-app.get("/free-endpoint", (req, res) => {
-  res.json({
-    message: "You are free to access me anytime",
-  });
-});
-
-app.get("/auth-endpoint", auth, (req, res) => {
-  res.json({
-    message: "You are authorized to access me",
-  });
-});
-
 app.listen(PORT, () => console.log(`Serve is running on port ${PORT}`));
 
 module.exports = app;
