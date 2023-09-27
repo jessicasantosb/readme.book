@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect } from "react";
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import Cookies from "universal-cookie";
 
@@ -13,7 +13,7 @@ function Login() {
   const [errMsg, setErrMsg] = useState("");
   const [login, setLogin] = useState(false);
 
-  const loginUrl = "https://readmebooks.vercel.app/login";
+  const loginUrl = process.env.LOGIN_URL || "http://localhost:5000/login";
 
   useEffect(() => {
     userRef.current.focus();

@@ -7,7 +7,8 @@ function Register() {
   const usernameRegex = /^[a-zA-Z][a-zA-Z0-9-_]{3,23}$/;
   const passwordRegex =
     /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
-  const registerUrl = "https://readmebooks.vercel.app/register";
+
+  const registerUrl = process.env.REGISTER_URL || "http://localhost:5000/register";
 
   const userRef = useRef();
   const errRef = useRef();
