@@ -1,16 +1,13 @@
-import React, { useEffect, useContext } from "react";
-import AuthContext from "../components/contexts/authProvider";
+import React, { useEffect } from "react";
 import axios from "axios";
 import Cookies from "universal-cookie";
 import "../App";
-import { Link } from "react-router-dom";
 import { motion as m } from "framer-motion";
 import { FaBookmark, FaBook } from "react-icons/fa";
 import Library from "../components/profile/library";
 import Recommendations from "../components/profile/recommendations";
 
 function Profile() {
-  const { auth } = useContext(AuthContext);
   const cookies = new Cookies();
   const token = cookies.get("token");
 
@@ -51,11 +48,6 @@ function Profile() {
           <p className="text-center text-xl text-white/60 pb-9 pt-20">
             Pick your favorites from Catalog
           </p>
-          <button className="bg-[#512B81] text-white rounded-xl shadow-sm shadow-[#8CABFF] hover:scale-95 h-12">
-            <Link className="p-14" to="/login">
-              Sign in
-            </Link>
-          </button>
         </div>
         <div
           id="area"
