@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Cookies from "universal-cookie";
 
@@ -7,6 +7,8 @@ function Login() {
   const cookies = new Cookies();
   const userRef = useRef();
   const errRef = useRef();
+
+  const navigate = useNavigate()
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -40,7 +42,7 @@ function Login() {
         cookies.set("token", result.data.token, {
           path: "/",
         });
-        window.location.href = "/profile";
+        navigate('/profile', {replace: true})
       })
       .catch((err) => {
         if (!err?.response) {

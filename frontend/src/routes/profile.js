@@ -1,22 +1,23 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
+import AuthContext from "../components/contexts/authProvider";
 import axios from "axios";
 import Cookies from "universal-cookie";
 import "../App";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { motion as m } from "framer-motion";
 import { FaBookmark, FaBook } from "react-icons/fa";
 import Library from "../components/profile/library";
 import Recommendations from "../components/profile/recommendations";
 
 function Profile() {
+  const { auth } = useContext(AuthContext);
   const cookies = new Cookies();
   const token = cookies.get("token");
-  const location = useLocation();
 
   useEffect(() => {
     const configuration = {
       method: "get",
-      url: "https://readmebooks.vercel.app/profile",
+      url: process.env.PROFILE_URL || "http://localhost:5000/profile",
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -45,7 +46,7 @@ function Profile() {
         />
         <div className="flex flex-col items-center justify-center z-10">
           <h1 className="text-white font-bold text-9xl text-center pt-28 md:text-7xl">
-            Hello {location.state.id}!
+            Hello!
           </h1>
           <p className="text-center text-xl text-white/60 pb-9 pt-20">
             Pick your favorites from Catalog
@@ -77,7 +78,7 @@ function Profile() {
 
       <Library />
 
-      <div class="flex">
+      <div className="flex">
         <div className="w-full relative m-5 border-b-[3px] border-[#512B81]"></div>
         <FaBook className="relative top-2 text-[#512B81]" size={70} />
         <div className="w-full relative m-5 border-b-[3px] border-[#512B81] "></div>

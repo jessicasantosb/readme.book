@@ -1,22 +1,20 @@
-import {React, useEffect} from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Navigate, useLocation } from "react-router-dom";
 import Cookies from "universal-cookie";
+import Profile from "../routes/profile";
 
 function ProtectedRoutes() {
   const cookies = new Cookies();
-  const Navigate = useNavigate();
   const location = useLocation();
 
   useEffect(() => {
     const token = cookies.get("token");
-    token ? (
-      <Navigate to="/profile" state={{ from: location }} replace/>
-    ) : (
-      <Navigate to="/login" state={{ from: location }} replace/>
-    );
-  }, [])
+    if (!token) {
+      return <Navigate to="/login" state={{ from: location }} replace />;
+    }
+  }, [cookies, location]);
   
-  return 
+  return <Profile />;
 }
 
 export default ProtectedRoutes;
