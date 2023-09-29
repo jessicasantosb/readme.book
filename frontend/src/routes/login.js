@@ -13,7 +13,7 @@ function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errMsg, setErrMsg] = useState("");
-  const [isLoggedin, setIsLoggedin] = useState(false);
+  const [login, setLogin] = useState(false);
 
   const loginUrl = process.env.LOGIN_URL || "http://localhost:5000/login";
 
@@ -38,7 +38,7 @@ function Login() {
     };
     axios(configuration)
       .then((result) => {
-        setIsLoggedin(true)
+        setLogin(true)
         cookies.set("token", result.data.token, {
           path: "/",
         });

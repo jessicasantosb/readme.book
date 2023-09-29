@@ -1,17 +1,12 @@
 import React, { useState, useRef } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import Cookies from "universal-cookie";
+import { Link } from "react-router-dom";
 import "../App";
 import { FaBars, FaTimes, FaBook } from "react-icons/fa";
 
 function Navbar() {
-  const [color, setColor] = useState(false);
-  const navRef = useRef();
-  const navigate = useNavigate();
-  const cookies = new Cookies();
-  const token = cookies.get("token");
-
   //change nav color when scrolling
+  const [color, setColor] = useState(false);
+
   function changeColor() {
     if (window.scrollY >= 80) {
       setColor(true);
@@ -23,6 +18,8 @@ function Navbar() {
   window.addEventListener("scroll", changeColor);
 
   //setting mobile nav
+  const navRef = useRef();
+
   function showNavbar() {
     navRef.current.classList.toggle("responsive_nav");
   }
@@ -31,12 +28,6 @@ function Navbar() {
     setTimeout(() => {
       navRef.current.classList.remove("responsive_nav");
     }, 1000);
-  }
-
-  // setting logout
-  function logout() {
-    cookies.remove("token", { path: "/" });
-    navigate("/", { replace: true });
   }
 
   return (
@@ -68,39 +59,21 @@ function Navbar() {
           >
             Catalog
           </Link>
-          <Link
-            className={token ? "text-white p-2 hover:underline" : "hidden"}
-            onClick={closeNav}
-            to="/profile"
-          >
-            Profile
-          </Link>
-          <div>
-            {token ? (
-              <button
-                className="bg-white text-[#35155D] rounded-sm shadow-sm shadow-white p-2 hover:scale-95 hover:bg-[#4477CE] hover:text-white hover:border-white"
-                onClick={() => logout()}
-              >
-                Logout
-              </button>
-            ):(
-              <div>
-                <Link
-                  className="bg-white text-[#35155D] rounded-sm shadow-sm shadow-white p-2 mr-5 hover:scale-95 hover:bg-[#35155D] hover:text-white hover:border-white"
-                  onClick={closeNav}
-                  to="/login"
-                >
-                  Login
-                </Link>
-                <Link
-                  className="bg-white text-[#35155D] rounded-sm shadow-sm shadow-white p-2 hover:scale-95 hover:bg-[#4477CE] hover:text-white hover:border-white"
-                  onClick={closeNav}
-                  to="/register"
-                >
-                  Register
-                </Link>
-              </div>
-            ) }
+          <div className="pl-44">
+            <Link
+              className="bg-white text-[#35155D] rounded-sm shadow-sm shadow-white p-2 mr-5 hover:scale-95 hover:bg-[#35155D] hover:text-white hover:border-white"
+              onClick={closeNav}
+              to="/login"
+            >
+              Login
+            </Link>
+            <Link
+              className="bg-white text-[#35155D] rounded-sm shadow-sm shadow-white p-2 hover:scale-95 hover:bg-[#4477CE] hover:text-white hover:border-white"
+              onClick={closeNav}
+              to="/register"
+            >
+              Register
+            </Link>
           </div>
         </div>
         <button className="nav-btn nav-close-btn" onClick={showNavbar}>
