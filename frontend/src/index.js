@@ -40,7 +40,7 @@ const router = createBrowserRouter([
         element: <Catalog />,
       },
       {
-        path: "/books/:id",
+        path: "/catalog/books/:id",
         element: <BooksInteraction />,
       },
       {

@@ -1,7 +1,7 @@
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const dbConnect = require("./db/dbConnect");
-const User = require("./db/userModel");
+const User = require("./db/model/user");
 const express = require("express");
 const auth = require("./auth");
 
@@ -94,6 +94,60 @@ app.post("/login", (req, res) => {
       });
     });
 });
+
+// user's likes
+// app.put("/catalog/books/:id/like", (req, res) => {
+//   User.findByIdAndUpdate(req.body.like,
+//     {
+//       $push: {likes: req.body.userId}
+//     }, {new: true}).exec((err, result) => {
+//       if(err) {
+//         return res.status(400).json({
+//           error: err
+//         })
+//       } else {
+//         res.json(result)
+//       }
+//     })
+// })
+
+// app.put("/catalog/books/:id/unlike", (req, res) => {
+//   User.findByIdAndUpdate(req.body.like,
+//     {
+//       $push: {likes: req.body.userId}
+//     }, {new: true}).exec((err, result) => {
+//       if(err) {
+//         return res.status(400).json({
+//           error: err
+//         })
+//       } else {
+//         res.json(result)
+//       }
+//     })
+// })
+
+// // use's comments
+// app.put("/catalog/books/:id/comment", (req, res) => {
+//   let comment = req.body.comment
+//   comment.postedBy = req.body.userId
+
+//   User.findByIdAndUpdate(req.body.like,
+//     {
+//       $push: {likes: req.body.userId}
+//     }, {new: true}).exec((err, result) => {
+//       if(err) {
+//         return res.status(400).json({
+//           error: err
+//         })
+//       } else {
+//         res.json(result)
+//       }
+//     })
+// })
+
+// app.put("/catalog/books/:id/uncomment", (req, res) => {
+
+// })
 
 app.listen(PORT, () => console.log(`Serve is running on port ${PORT}`));
 
