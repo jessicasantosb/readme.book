@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import axios from "axios";
-import Comments from "./comments/comments";
 
 function BooksInteraction() {
   const [book, setBook] = useState({});
@@ -45,8 +44,6 @@ function BooksInteraction() {
             More
           </a>
         </div>
-
-        <Comments />
       </main>
     </section>
   );
