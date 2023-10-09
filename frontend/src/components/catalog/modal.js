@@ -1,4 +1,4 @@
-import react from 'react';
+import React from 'react';
 import {FaTimes} from 'react-icons/fa'
 
 function Modal({show, item, onClose}) {
