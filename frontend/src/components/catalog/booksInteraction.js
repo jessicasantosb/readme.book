@@ -46,7 +46,8 @@ function BooksInteraction() {
           </a>
         </div>
 
-        <Comments />
+        <Comments currentUserId="1"/>
+        
       </main>
     </section>
   );

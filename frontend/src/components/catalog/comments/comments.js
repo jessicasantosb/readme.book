@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import {
   getComments as getCommentApi,
   createComment as createCommentApi,
+  deleteComment as deleteCommentApi,
 } from "../../api/commentApi";
 import Comment from "./comment";
 import CommentForm from "./commentForm";
@@ -9,6 +10,7 @@ import { GiConversation } from "react-icons/gi";
 
 function Comments({ currentUserId }) {
   const [serverComments, setServerComments] = useState([]);
+  const [activeComment, setActiveComment] = useState(null)
   const rootComments = serverComments.filter(
     (serverComment) => serverComment.parentId === null
   );
@@ -27,6 +29,17 @@ function Comments({ currentUserId }) {
     createCommentApi(text, parentId).then((comment) => {
       setServerComments([comment, ...serverComments]);
     });
+  };
+
+  const deleteComment = (commentId) => {
+    if (window.confirm("Will you remove this comment?")) {
+      deleteCommentApi(commentId).then(() => {
+        const updatedServerComments = serverComments.filter(
+          (serverComment) => serverComment.id !== commentId
+        );
+        setServerComments(updatedServerComments)
+      });
+    }
   };
 
   useEffect(() => {
@@ -49,6 +62,11 @@ function Comments({ currentUserId }) {
               key={rootComment.id}
               comment={rootComment}
               replies={getReplies(rootComment.id)}
+              currentUserId={currentUserId}
+              addComment={addComment}
+              deleteComment={deleteComment}
+              activeComment={activeComment}
+              setActiveComment={setActiveComment}
             />
           </div>
         ))}
