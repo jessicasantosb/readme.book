@@ -1,5 +1,5 @@
-import React from "react";
-import { FaReply, FaEdit, FaTrash } from "react-icons/fa";
+import React, {useState} from "react";
+import { FaThumbsUp, FaReply, FaEdit, FaTrash } from "react-icons/fa";
 import CommentForm from "./commentForm";
 
 function Comment({
@@ -13,12 +13,22 @@ function Comment({
   activeComment,
   setActiveComment,
 }) {
+  const [like, setLike] = useState(2),
+    [isLike, setIsLike] = useState(false),
+
+    onLikeBtnClick = () => {
+      setLike(like + (isLike ? -1 : 1))
+      setIsLike(!isLike)
+    }
+
   const fiveMinutes = 300000;
   const timePassed = new Date() - Date(comment.createdAt) > fiveMinutes;
+
   const canReply = Boolean(currentUserId);
   const canEdit = currentUserId === comment.userId && !timePassed;
   const canDelete = currentUserId === comment.userId && !timePassed;
   const createdAt = new Date(comment.createdAt).toLocaleDateString();
+
   const isReplying =
     activeComment &&
     activeComment.type === "replying" &&
@@ -36,12 +46,10 @@ function Comment({
         <p>{createdAt}</p>
       </div>
 
-      {!isEditing && (
-        <p>{comment.body}</p>
-      )}
+      {!isEditing && <p>{comment.body}</p>}
       {isEditing && (
         <CommentForm
-          submitLabel='Update'
+          submitLabel="Update"
           initialText={comment.body}
           hasCancelButton
           handleSubmit={(text) => updateComment(text, comment.id)}
@@ -49,7 +57,12 @@ function Comment({
         />
       )}
 
-      <div className="flex flex-row py-2 px-5 gap-3">
+      <div className="flex flex-row items-center py-2 px-5 gap-3">
+        <p className="flex gap-2 items-center pr-5 text-[#6495ED]">
+          <FaThumbsUp className={isLike ? "" : "opacity-40"} onClick={onLikeBtnClick}/>
+          {like}
+        </p>
+
         {canReply && (
           <FaReply
             color="purple"
@@ -78,6 +91,7 @@ function Comment({
           />
         )}
       </div>
+
       <div className="flex justify-start -ml-5">
         {isReplying && (
           <CommentForm

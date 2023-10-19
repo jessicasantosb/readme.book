@@ -30,16 +30,6 @@ function Catalog() {
               Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
               officia deserunt mollit anim id est laborum.
             </p>
-            <Link
-              className={
-                token
-                  ? "hidden"
-                  : "bg-[#512B81] text-white rounded-xl shadow-sm shadow-[#4477CE]  text-center p-5 uppercase hover:scale-90 hover:shadow-none mr-5"
-              }
-              to="/login"
-            >
-              Sign in
-            </Link>
           </div>
 
           <div className="absolute w-full flex items-end justify-center -bottom-14 pt-5">
