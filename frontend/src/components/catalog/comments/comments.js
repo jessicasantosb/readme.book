@@ -3,6 +3,7 @@ import {
   getComments as getCommentApi,
   createComment as createCommentApi,
   deleteComment as deleteCommentApi,
+  updateComment as updateCommentApi,
 } from "../../api/commentApi";
 import Comment from "./comment";
 import CommentForm from "./commentForm";
@@ -10,7 +11,7 @@ import { GiConversation } from "react-icons/gi";
 
 function Comments({ currentUserId }) {
   const [serverComments, setServerComments] = useState([]);
-  const [activeComment, setActiveComment] = useState(null)
+  const [activeComment, setActiveComment] = useState(null);
   const rootComments = serverComments.filter(
     (serverComment) => serverComment.parentId === null
   );
@@ -28,6 +29,7 @@ function Comments({ currentUserId }) {
     console.log("add comment", text, parentId);
     createCommentApi(text, parentId).then((comment) => {
       setServerComments([comment, ...serverComments]);
+      setActiveComment(null);
     });
   };
 
@@ -37,9 +39,22 @@ function Comments({ currentUserId }) {
         const updatedServerComments = serverComments.filter(
           (serverComment) => serverComment.id !== commentId
         );
-        setServerComments(updatedServerComments)
+        setServerComments(updatedServerComments);
       });
     }
+  };
+
+  const updateComment = (text, commentId) => {
+    updateCommentApi(text, commentId).then(() => {
+      const updatedServerComments = serverComments.map((serverComment) => {
+        if (serverComment.id === commentId) {
+          return { ...serverComment, body: text };
+        }
+        return serverComment;
+      });
+      setServerComments(updatedServerComments);
+      setActiveComment(null);
+    });
   };
 
   useEffect(() => {
@@ -49,15 +64,15 @@ function Comments({ currentUserId }) {
   }, []);
 
   return (
-    <section className="my-24 mx-96">
-      <GiConversation className="absolute w-full h-full -right-96 m-0 opacity-20 text-[#4477CE] -z-10" />
+    <section className="my-24 mx-9">
+      <GiConversation className="absolute w-full h-full -right-72 m-0 opacity-20 text-[#4477CE] -z-10" />
       <h1 className="flex flex-row justify-center gap-5 font-bold text-5xl text-[#4477CE] pt-32 pb-9 text-center">
         Comments
       </h1>
       <CommentForm submitLabel="Send" handleSubmit={addComment} />
       <div>
         {rootComments.map((rootComment) => (
-          <div className="m-5">
+          <div className="mx-5 my-9">
             <Comment
               key={rootComment.id}
               comment={rootComment}
@@ -65,6 +80,7 @@ function Comments({ currentUserId }) {
               currentUserId={currentUserId}
               addComment={addComment}
               deleteComment={deleteComment}
+              updateComment={updateComment}
               activeComment={activeComment}
               setActiveComment={setActiveComment}
             />

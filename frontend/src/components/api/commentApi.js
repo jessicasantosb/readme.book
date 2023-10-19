@@ -38,9 +38,6 @@ export const getComments = async () => {
 export const createComment = async (text, parentId = null) => {
 
   const date = new Date()
-  // const day = date.getDate()
-  // const month = date.getMonth()
-  // const year = date.getFullYear()
 
   return {
     id: Math.random().toString(36).substr(2, 9),

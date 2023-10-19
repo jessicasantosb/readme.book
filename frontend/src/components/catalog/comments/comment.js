@@ -8,6 +8,7 @@ function Comment({
   currentUserId,
   addComment,
   deleteComment,
+  updateComment,
   parentId = null,
   activeComment,
   setActiveComment,
@@ -30,11 +31,24 @@ function Comment({
 
   return (
     <section>
-      <div className="flex flex-row justify-between py-5">
-        <h3 className="text-[#512B81]">{comment.username}</h3>
+      <div className="flex flex-row justify-between pt-5 ">
+        <h3 className="text-[#512B81] text-lg italic">{comment.username}</h3>
         <p>{createdAt}</p>
       </div>
-      <p>{comment.body}</p>
+
+      {!isEditing && (
+        <p>{comment.body}</p>
+      )}
+      {isEditing && (
+        <CommentForm
+          submitLabel='Update'
+          initialText={comment.body}
+          hasCancelButton
+          handleSubmit={(text) => updateComment(text, comment.id)}
+          handleCancel={() => setActiveComment(null)}
+        />
+      )}
+
       <div className="flex flex-row py-2 px-5 gap-3">
         {canReply && (
           <FaReply
@@ -64,12 +78,14 @@ function Comment({
           />
         )}
       </div>
-      {isReplying && (
-        <CommentForm
-          submitLabel="Reply"
-          handleSubmit={() => addComment(text, replyId)}
-        />
-      )}
+      <div className="flex justify-start -ml-5">
+        {isReplying && (
+          <CommentForm
+            submitLabel="Reply"
+            handleSubmit={(text) => addComment(text, replyId)}
+          />
+        )}
+      </div>
       {replies.length > 0 && (
         <div className="ml-9">
           {replies.map((reply) => (
@@ -80,7 +96,10 @@ function Comment({
               currentUserId={currentUserId}
               addComment={addComment}
               deleteComment={deleteComment}
+              updateComment={updateComment}
               parentId={comment.id}
+              activeComment={activeComment}
+              setActiveComment={setActiveComment}
             />
           ))}
         </div>
