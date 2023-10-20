@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import Modal from './modal'
+import Modal from '../catalog/modal'
 
 function CardSearch({book}) {
     //setting modal

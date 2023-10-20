@@ -4,7 +4,7 @@ import React from 'react'
 function Recommendations() {
     return (
         <section className='mx-5 mt-24 mb-12 text-center'>
-            <h2 className='text-[#512B81] text-3xl pb-24'>We think you might like these</h2>
+            <h2 className='text-5xl text-[#4477CE] pb-24'>We think you might like these</h2>
             <main className='flex flex-row flex-wrap items-center justify-center gap-9 m-9'>
                 <div className='flex gap-2 shadow-lg shadow-[#512B81] p-2 rounded-2xl w-96'>
                     <img src="" alt="thumbnail" className='w-64'/>

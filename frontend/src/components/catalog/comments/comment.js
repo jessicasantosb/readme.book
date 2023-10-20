@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { FaThumbsUp, FaReply, FaEdit, FaTrash } from "react-icons/fa";
 import CommentForm from "./commentForm";
 
@@ -15,11 +15,10 @@ function Comment({
 }) {
   const [like, setLike] = useState(2),
     [isLike, setIsLike] = useState(false),
-
     onLikeBtnClick = () => {
-      setLike(like + (isLike ? -1 : 1))
-      setIsLike(!isLike)
-    }
+      setLike(like + (isLike ? -1 : 1));
+      setIsLike(!isLike);
+    };
 
   const fiveMinutes = 300000;
   const timePassed = new Date() - Date(comment.createdAt) > fiveMinutes;
@@ -59,7 +58,10 @@ function Comment({
 
       <div className="flex flex-row items-center py-2 px-5 gap-3">
         <p className="flex gap-2 items-center pr-5 text-[#6495ED]">
-          <FaThumbsUp className={isLike ? "" : "opacity-40"} onClick={onLikeBtnClick}/>
+          <FaThumbsUp
+            className={isLike ? "" : "opacity-40"}
+            onClick={onLikeBtnClick}
+          />
           {like}
         </p>
 

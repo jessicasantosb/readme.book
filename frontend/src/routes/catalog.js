@@ -1,18 +1,12 @@
 import React from "react";
 import { motion as m } from "framer-motion";
 import "../App";
-import { Link } from "react-router-dom";
-import Cookies from "universal-cookie";
 import book1Catalog from "../images/book1Catalog.jpg";
 import book2Catalog from "../images/book2Catalog.jpg";
 import book3Catalog from "../images/book3Catalog.jpg";
 import CardsCatalog from "../components/catalog/cardsCatalog";
-import SearchBooks from "../components/catalog/searchBooks";
-import { FaBook } from "react-icons/fa";
 
 function Catalog() {
-  const cookies = new Cookies();
-  const token = cookies.get("token");
 
   return (
     <>
@@ -53,13 +47,6 @@ function Catalog() {
 
         <CardsCatalog />
 
-        <div className="flex">
-          <div className="w-full relative m-5 border-b-[3px] border-[#512B81]"></div>
-          <FaBook className="relative top-2 text-[#512B81]" size={70} />
-          <div className="w-full relative m-5 border-b-[3px] border-[#512B81] "></div>
-        </div>
-
-        <SearchBooks />
       </m.div>
     </>
   );
